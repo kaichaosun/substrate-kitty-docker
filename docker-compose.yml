@@ -1,0 +1,16 @@
+version: "2.2"
+
+services:
+  dev:
+    image: substratekitties:0.1
+    ports:
+      - "9944:9944"
+    entrypoint: ./usr/local/bin/substratekitties --dev --ws-external
+    depends_on:
+      - ui
+  
+  ui:
+    image: substratekitties-ui:0.1
+    ports:
+      - "8000:8000"
+    entrypoint: yarn run dev
